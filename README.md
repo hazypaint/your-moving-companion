@@ -1,2 +1,4 @@
 # your-moving-companion
 AJAX mini project from Udacity course
+
+This is project number 5 from the FEND Udacity Nandodegree. In this project I'll develope a single-page application featuring a map of a neighborhood I would like to visit. Additional functionality to this application: map markers to identify popular locations or places I'd like to visit, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Implementation of third-party APIs that provide additional information about each of these locations will be included (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
