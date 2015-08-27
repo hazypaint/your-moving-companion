@@ -23,7 +23,6 @@ function loadData() {
 
     // creates link for AJAX request
     var requestNYT = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cityValue + "&api-key=bec2df7e772a904f941747a02d2bc3e7:4:72782796";
-    // console.log(requestNYT);
 
     // NYTimes AJAX request
     $.getJSON(requestNYT)
@@ -45,7 +44,10 @@ function loadData() {
 
     // wiki link created with Wikipedia API sandbox
     var requestWiki = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='+ cityValue + '&format=json&callback=wikiCallback'
-    // console.log("wikilink: " + requestWiki);
+
+    // var wikiRequestTimeout = setTimeout(function(){
+    //     $wikiElem.text("Wikipedia articles could not be loaded.");
+    // }, 8000);
 
     // Wikipedia AJAX request
     $.ajax({
@@ -57,15 +59,14 @@ function loadData() {
 
             for (var i = 0 ; i < wikiArticles.length ; i++ ) {
                 var articleStr = wikiArticles[i];
-                console.log(articleStr);
                 var url = "http://en.wikipedia.org/wiki/" + wikiArticles[i];
                 $wikiElem.append("<li><a href='" + url + "'target='_blank'>" + articleStr + "</a></li>" );
                 };
+            // clearTimeout(wikiRequestTimeout);
         },
-        error: function (errorMessage) {
+        error: function (e) {
             $wikiElem.text("Wikipedia articles could not be loaded.");
         }
-
     });
 
     return false;
@@ -74,6 +75,3 @@ function loadData() {
 $('#form-container').submit(loadData);
 
 loadData();
-
-
-
